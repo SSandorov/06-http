@@ -3,7 +3,7 @@ const jokeUrl = 'https://api.chucknorris.io/jokes/random';
 
 // El fetch es un método nativo de JS con la que hacemos las peticiones HTTP
 // Necesita de un input (URL), y nos devuelve una promesa que resuelve una respuesta
-fetch(jokeUrl).then(resp => {
+// fetch(jokeUrl).then(resp => {
     // De esta manera comprobamos qué es la respuesta
     // console.log(resp);
 
@@ -13,11 +13,11 @@ fetch(jokeUrl).then(resp => {
     devuelve una promesa, así que podemos emplear los métodos que las componen
     */
                     // podemos desestructurar los datos que nosotros queramos
-    resp.json().then(data /* ({id, value}) */ => {
-        console.log(data.id);
-        console.log(data.value);
-    });
-});
+    // resp.json().then(data /* ({id, value}) */ => {
+        // console.log(data.id);
+        // console.log(data.value);
+    // });
+// });
 
 /*
 Es importante conocer los distintos estados de las peticiones HTTP. Las más comunes son las
@@ -27,3 +27,16 @@ siguientes:
     - 400 en general: peticiones fallidas que hemos hecho 
     - 500: problemas del lado del servidor
 */
+
+// Pro tip: Como escribir una petición HTTP de manera más elegante, denominada
+// promesa en cadena
+
+fetch(jokeUrl)
+    // al hacer esto, estoy diciendo que la promesa resp va a devolver otra promesa
+    .then(resp => resp.json())
+    // y evidentemente, como el resp.json() devuelve una promesa, podemos añadir 
+    // la respuesta consecutivamente
+    .then(({id, value}) => {
+        console.log(id);
+        console.log(value);
+    });
