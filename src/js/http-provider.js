@@ -9,6 +9,9 @@ estar repitiendo el mismo código, es importante separarlo del index.js
 // Variable que guarda la url del joke API
 const jokeUrl = 'https://api.chucknorris.io/jokes/random';
 
+// Variable que guarda la URL de reqres API para testear la creación de usuarios
+const usuariosUrl = 'https://reqres.in/api/users?page=2';
+
 // El fetch es un método nativo de JS con la que hacemos las peticiones HTTP
 // Necesita de un input (URL), y nos devuelve una promesa que resuelve una respuesta
 // fetch(jokeUrl).then(resp => {
@@ -84,6 +87,17 @@ const obtenerChiste = async() => {
 
 }
 
+// Función que maneja la creación de usuarios
+const obtenerUsuarios = async() => {
+
+    const resp = await fetch(usuariosUrl);
+        // Desestructuramos y sólo elegimos la data
+    const {data:usuarios} = await resp.json();
+
+    return usuarios;
+}
+
 export {
-    obtenerChiste
+    obtenerChiste,
+    obtenerUsuarios
 }
