@@ -1,4 +1,5 @@
-// Importación de peticiones HTTP
-import { obtenerChiste } from "./js/http-provider";
+// Importamos el init de la página chistes-page.js
+import { init } from "./js/chistes-page.js";
 
-obtenerChiste().then(console.log);
+
+init()
