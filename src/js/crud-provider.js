@@ -54,7 +54,31 @@ const crearUsuario = async(usuario) => {
 
 }
 
+// Creamos la función que nos actualizará el usuario
+const actualizarUsuario = async(id, usuario) => {
+
+    // especificamos la ruta del dominio que necesitamos
+    // en este caso es la petición PUT -- UPDATE
+    const resp = await fetch(`${urlCRUD}/${id}`, {
+        // Este objeto nos va a permitir configurar la petición PUT
+        method: 'PUT',
+        // el body es la data que yo quiero pedir
+        // debe ser un string, por lo que debemos convertir el JSON en string
+        body: JSON.stringify(usuario),
+        // los headers son data adicional sobre la petición que puede que el 
+        // back-end nos pida
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    // Comprobamos la respuesta
+    // console.log(await resp.json());
+    return await resp.json();
+
+}
+
 export {
     getUsuario,
-    crearUsuario
+    crearUsuario,
+    actualizarUsuario
 }
