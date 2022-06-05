@@ -2,6 +2,7 @@
 
 import { init as initChistes } from "./js/chistes-page.js";
 import { init as initUsuarios } from "./js/usuarios-page.js";
+import { init as initArchivos } from "./js/archivos-page.js";
 
 import { obtenerUsuarios } from "./js/http-provider.js";
 
@@ -11,6 +12,8 @@ import * as CRUD from "./js/crud-provider.js";
 // initChistes()
 
 // initUsuarios()
+
+initArchivos()
 
 // obtenerUsuarios().then(console.log);
 
@@ -23,4 +26,4 @@ import * as CRUD from "./js/crud-provider.js";
     // name: 'Melissa',
     // job: 'Developer'
 // }).then(console.log);
-CRUD.borrarUsuario(1).then(console.log);
+// CRUD.borrarUsuario(1).then(console.log);
