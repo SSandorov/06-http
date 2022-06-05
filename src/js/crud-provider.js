@@ -77,8 +77,28 @@ const actualizarUsuario = async(id, usuario) => {
 
 }
 
+// Creamos la función que nos borrará un usuario
+const borrarUsuario = async(id) => {
+
+    // especificamos la ruta del dominio que necesitamos
+    // en este caso es la petición DELETE -- DELETE
+    const resp = await fetch(`${urlCRUD}/${id}`, {
+        // Este objeto nos va a permitir configurar la petición PUT
+        method: 'DELETE',
+        /*
+        Hoy en día no se elimina directamente, sino que se manda una petición al
+        backend, y es este el que bloquea, borra o inhabilita el elemento en cuestión
+        */
+    });
+
+    // Creamos un operador ternario para especificar si se borró o no
+    return (resp.ok) ? 'Borrado': 'No se pudo eliminar';
+
+}
+
 export {
     getUsuario,
     crearUsuario,
-    actualizarUsuario
+    actualizarUsuario,
+    borrarUsuario
 }
